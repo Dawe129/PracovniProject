@@ -15,7 +15,7 @@ public class CteniCSV {
         try (BufferedReader br = new BufferedReader(new FileReader(cesta))) {
             while ((radek = br.readLine()) != null) {
                 String[] hodnoty = radek.split(oddelovac);
-                data.add(hodnoty[13]);
+                data.add(hodnoty[0]);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -28,7 +28,7 @@ public class CteniCSV {
             String radek;
             while ((radek = br.readLine()) != null) {
                 String[] sloupce = radek.split(",");
-                if (sloupce[13].startsWith("Burda")) { // předpokládáme, že druhý sloupec je značka
+                if (sloupce.length > 14 && sloupce[14].startsWith("Burda")) { // předpokládáme, že druhý sloupec je značka
                     objednavky.add(sloupce[0]); // předpokládáme, že první sloupec je ID objednávky
                 }
             }
